@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 20_191_020_183_529) do
   create_table 'diagnostic_procedures', force: :cascade do |t|
     t.text 'description'
     t.datetime 'moment'
+    t.integer 'patient_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['patient_id'], name: 'index_diagnostic_procedures_on_patient_id'
   end
 
   create_table 'facilities', force: :cascade do |t|
@@ -75,9 +77,11 @@ ActiveRecord::Schema.define(version: 20_191_020_183_529) do
     t.integer 'medication_route'
     t.integer 'order_frequency_id'
     t.text 'necessity'
+    t.integer 'patient_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['order_frequency_id'], name: 'index_medication_orders_on_order_frequency_id'
+    t.index ['patient_id'], name: 'index_medication_orders_on_patient_id'
   end
 
   create_table 'observations', force: :cascade do |t|
@@ -118,33 +122,6 @@ ActiveRecord::Schema.define(version: 20_191_020_183_529) do
     t.index ['patient_id'], name: 'index_patients_allergies_on_patient_id'
   end
 
-  create_table 'patients_drs', force: :cascade do |t|
-    t.integer 'patient_id'
-    t.integer 'diagnostic_procedure_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['diagnostic_procedure_id'], name: 'index_patients_drs_on_diagnostic_procedure_id'
-    t.index ['patient_id'], name: 'index_patients_drs_on_patient_id'
-  end
-
-  create_table 'patients_medication_orders', force: :cascade do |t|
-    t.integer 'patient_id'
-    t.integer 'medication_order_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['medication_order_id'], name: 'index_patients_medication_orders_on_medication_order_id'
-    t.index ['patient_id'], name: 'index_patients_medication_orders_on_patient_id'
-  end
-
-  create_table 'patients_treatments', force: :cascade do |t|
-    t.integer 'patient_id'
-    t.integer 'treatment_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['patient_id'], name: 'index_patients_treatments_on_patient_id'
-    t.index ['treatment_id'], name: 'index_patients_treatments_on_treatment_id'
-  end
-
   create_table 'symptoms', force: :cascade do |t|
     t.text 'description'
     t.integer 'admission_id'
@@ -156,7 +133,9 @@ ActiveRecord::Schema.define(version: 20_191_020_183_529) do
   create_table 'treatments', force: :cascade do |t|
     t.text 'description'
     t.text 'necessity'
+    t.integer 'patient_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['patient_id'], name: 'index_treatments_on_patient_id'
   end
 end

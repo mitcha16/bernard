@@ -1,0 +1,6 @@
+<tr>
+  <td><%=patient['id']%></td>
+  <td><%= link_to name, patient_path(patient['id']) %></td>
+  <td><%=patient['dob'].strftime("%m/%d/%Y")%></td>
+  <td><%=patient['gender']%></td>
+</tr>

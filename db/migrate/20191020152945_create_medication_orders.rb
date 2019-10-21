@@ -9,6 +9,7 @@ class CreateMedicationOrders < ActiveRecord::Migration[5.2]
       t.integer :medication_route
       t.references :order_frequency, foreign_key: true
       t.text :necessity
+      t.references :patient, foreign_key: true
 
       t.timestamps
     end
