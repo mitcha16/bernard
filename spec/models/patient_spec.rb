@@ -92,4 +92,38 @@ describe Patient, type: :model do
       expect(patient.treatment).to eq(treatment)
     end
   end
+
+  describe 'parsing' do
+    it 'should format a patients name' do
+      expect(patient.name).to eq('John K. Smith')
+    end
+
+    it 'should parse the age from a patients dob' do
+      expect(patient.age).to eq(27)
+    end
+
+    it 'should parse and format a patients data from a given attribute' do
+      expect(patient.parsed_data('diagnoses')).to eq('hay fever')
+    end
+
+    it 'should parse and format a patients data from a given attribute with the code' do
+      expect(patient.parsed_data_with_code('diagnoses')).to eq('hay fever (123)')
+    end
+
+    it 'should parse a patients medication order' do
+      expect(patient.parsed_medication_order).to include('tylenol')
+    end
+
+    it 'should parse a patients medication order' do
+      expect(patient.parsed_medication_order).to include('tylenol')
+    end
+
+    it 'should parse a patients diagnostic procedure' do
+      expect(patient.parsed_diagnostic_procedure).to include('surgery')
+    end
+
+    it 'should parse a patients treatment' do
+      expect(patient.parsed_treatment).to include('surgical')
+    end
+  end
 end

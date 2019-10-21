@@ -17,36 +17,35 @@ describe PatientsController, type: :controller do
         facility: Facility.create(name: "#{Faker::Address.state} Hospital"),
         patient_id: t + 1
       )
-
     end
   end
 
-  describe "GET index" do
-    it "assigns @patients" do
+  describe 'GET index' do
+    it 'assigns @patients' do
       get :index
       expect(assigns(:patients)).to eq(Patient.all)
     end
 
-    it "renders the index template" do
+    it 'renders the index template' do
       get :index
-      expect(response).to render_template("index")
+      expect(response).to render_template('index')
     end
   end
 
-  describe "GET show" do
-    it "assigns @patient" do
-      get :show, params: {id: 1}
+  describe 'GET show' do
+    it 'assigns @patient' do
+      get :show, params: { id: 1 }
       expect(assigns(:patient)).to eq(Patient.find(1))
     end
 
-    it "assigns @facility" do
-      get :show, params: {id: 1}
+    it 'assigns @facility' do
+      get :show, params: { id: 1 }
       expect(assigns(:facility)).to eq(Patient.find(1).admission.facility)
     end
 
-    it "renders the show template" do
-      get :show, params: {id: 1}
-      expect(response).to render_template("show")
+    it 'renders the show template' do
+      get :show, params: { id: 1 }
+      expect(response).to render_template('show')
     end
   end
 end

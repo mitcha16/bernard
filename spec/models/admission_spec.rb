@@ -39,4 +39,13 @@ describe Admission, type: :model do
       expect(admission.patient).to eq(patient)
     end
   end
+  describe 'parsed' do
+    it 'should retrieve a date from its moment attribute' do
+      expect(admission.date).to eq("October 11, 2019")
+    end
+
+    it 'should retrieve a time from its moment attribute' do
+      expect(admission.time).to eq("12:00 AM")
+    end
+  end
 end
