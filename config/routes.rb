@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   root 'patients#index'
 
-  resources :patients, only: [:index, :show]
+  resources :patients, only: %i[index show]
 end
