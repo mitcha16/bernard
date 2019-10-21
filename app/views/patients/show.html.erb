@@ -2,6 +2,9 @@
 
 <table class="table">
   <tbody>
+    <tr style="background-color:#F6F6F6;">
+      <td><strong>Emergency Transfer Summary (Form 34L-D)</strong></td>
+    </tr>
     <tr>
       <td><strong>Transferring Facility</strong></td>
     </tr>
@@ -11,11 +14,11 @@
     <tr>
       <td><strong>Patient Information</strong></td>
     </tr>
-    <tr>
-      <td>First Name<br><br><%=@patient.first_name%></td>
-      <td>Middle Name<br><br><%=@patient.middle_name%></td>
-      <td>Last Name<br><br><%=@patient.last_name%></td>
-      <td>Medical Record<br>(MR)<br><%=@patient.mr%></td>
+    <tr class="d-flex">
+      <td style="margin-right:50px;">First Name<br><br><%=@patient.first_name%></td>
+      <td style="margin-right:50px;">Middle Name<br><br><%=@patient.middle_name%></td>
+      <td style="margin-right:50px;">Last Name<br><br><%=@patient.last_name%></td>
+      <td style="margin-right:50px;">Medical Record<br>(MR)<br><%=@patient.mr%></td>
     </tr>
     <tr>
       <td><strong>Summary</strong></td>
