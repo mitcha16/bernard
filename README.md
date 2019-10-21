@@ -1,24 +1,10 @@
-# README
+# Screenshots
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Index Screenshot](lib/images/index.png)
 
-Things you may want to cover:
+![Show Screenshot](lib/images/show.png)
 
-* Ruby version
+* rake db:setup (or rails db:setup)
+* rails s
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Test Coverage - 100%
