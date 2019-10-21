@@ -2,19 +2,16 @@
 
 <table class="table">
   <tbody>
-    <tr style="background-color:#F6F6F6;">
-      <td><strong>Emergency Transfer Summary (Form 34L-D)</strong></td>
-    </tr>
     <tr>
       <td><strong>Transferring Facility</strong></td>
     </tr>
     <tr>
-      <td style="color:blue;"><%=@patient.admission.facility.name%></td>
+      <td><%=@facility.name%></td>
     </tr>
     <tr>
       <td><strong>Patient Information</strong></td>
     </tr>
-    <tr style="color:blue;">
+    <tr>
       <td>First Name<br><br><%=@patient.first_name%></td>
       <td>Middle Name<br><br><%=@patient.middle_name%></td>
       <td>Last Name<br><br><%=@patient.last_name%></td>
@@ -22,15 +19,14 @@
     </tr>
     <tr>
       <td><strong>Summary</strong></td>
-      <td style="color:blue;">
-        This <%=@patient.age%> years old <%=@patient.gender%> was admitted to <%=@facility.name%> on <%=@patient.admission.date%> at <%=@patient.admission.time%> due to <%=@patient.admission.diagnoses
-        > described_code | to_sentence%>. The observed symptoms on admission were <%=@patient.admission.symptoms > description | to_sentence%>. <%=@patient.admission.observations
-        > description | to_sentence%>.
-        Upon asking about known allergies, the patient disclosed <%=@patient.allergies > description | to_sentence%>. Upon asking about chronic conditions, the patient disclosed
-        <%=@patient.chronic_conditions > described_code | to_sentence%>. The patient was administered with <%=@patient.medications > name, dosage, route, frequency, “to”, necessity | space_joi
-        n | to_sentence%>.
-        The staff performed <%=@patient.diagnostic_procedures > description, “on”, moment.date, “at”, moment.time | space_join | to_sentence%>, revealing <%=@patient.diagnoses
-        > described_code | to_sentence%>. Our team proceeded to <%=@patient.treatments > description, “to”, necessity | space_join | to_sentence%>.
+    </tr>
+    <tr>
+      <td>
+        This <%=@patient.age%> years old <%=@patient.gender%> was admitted to <%=@facility.name%> on <%=@patient.admission.date%> at <%=@patient.admission.time%> due to the following: <%=@patient.parsed_data_with_code('diagnoses')%>.
+        The observed symptoms on admission were <%=@patient.parsed_data('symptoms')%>. <%=@patient.parsed_data('observations')%>.
+        Upon asking about known allergies, the patient disclosed <%=@patient.parsed_data('allergies')%>. Upon asking about chronic conditions, the patient disclosed
+        <%=@patient.parsed_data_with_code('chronic_conditions')%>. The patient was administered with <%=@patient.parsed_medication_order%>.
+        The staff performed <%=@patient.parsed_diagnostic_procedure%>, revealing <%=@patient.parsed_data_with_code('diagnoses')%>. Our team proceeded to <%=@patient.parsed_treatment%>.
       </td>
     </tr>
   </tbody>
